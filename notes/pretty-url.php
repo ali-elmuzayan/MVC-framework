@@ -26,7 +26,7 @@
  *  - https://ali-muzayan.com/admin/user
  *
  *
- * in the previous:
+ * Traditional PHP: URL = file:
  *  - the url was point to the path of a file in the file system
  *  - and if you use this pretty url it look like you tell to go to those
  *    folder and at the end looking for the default file which
