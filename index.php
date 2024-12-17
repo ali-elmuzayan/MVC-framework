@@ -22,7 +22,7 @@ if ($params === false) {
 }
 
 $action = $params['action'];
-$controller = 'App\Controller\\' . ucwords($params['controller']);
+$controller = 'App\Controller\\' . ucwords($params['controller']) . 'Controller';
 
 
 
