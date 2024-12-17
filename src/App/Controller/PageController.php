@@ -1,10 +1,13 @@
 <?php
 
 
-class PageController {
+namespace App\Controller;
+use App\Models\Page;
+
+class PageController
+{
     public function index()
     {
-        require "src/models/Page.php";
 
         $model = new Page;
         $pages = $model->getData();

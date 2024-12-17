@@ -1,9 +1,12 @@
 <?php
+namespace App\Models;
 
+use PDO;
 
 class Page
 {
-    public function getData() {
+    public function getData()
+    {
         $dns = 'mysql:host=localhost;dbname=cms';
         $pdo = new PDO($dns, 'root', '');
         $query = $pdo->prepare("SELECT * FROM `pages`");
