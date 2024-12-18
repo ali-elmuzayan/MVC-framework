@@ -19,4 +19,8 @@ class PageController
         require "views/page_index.php";
     }
 
+    public function show(string $id) {
+        var_dump($id);
+    }
+
 }
