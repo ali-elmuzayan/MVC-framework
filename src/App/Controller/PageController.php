@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 use App\Models\Page;
+use Framework\Viewer;
 
 class PageController
 {
@@ -20,7 +21,9 @@ class PageController
     }
 
     public function show(string $id) {
-        var_dump($id);
+        $view = new Viewer();
+        echo $view->render('includes/header', ['title' => 'show pages']);
+        echo $view->render('page/show', ['id' => $id]);
     }
 
 }
