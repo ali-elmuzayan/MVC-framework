@@ -1,0 +1,1 @@
+<h1><?= htmlspecialchars($title)?></h1>

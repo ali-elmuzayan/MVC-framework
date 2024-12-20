@@ -1,14 +1,16 @@
 <?php
 namespace App\Models;
 
+use App\Database;
 use PDO;
 
 class Page
 {
+    public function __construct(private Database $db) {}
     public function getData()
     {
-        $dns = 'mysql:host=localhost;dbname=cms';
-        $pdo = new PDO($dns, 'root', '');
+        $pdo = $this->db->getConnection();
+
         $query = $pdo->prepare("SELECT * FROM `pages`");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);

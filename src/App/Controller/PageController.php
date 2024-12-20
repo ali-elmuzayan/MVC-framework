@@ -7,23 +7,23 @@ use Framework\Viewer;
 
 class PageController
 {
+    public function __construct(private Viewer $viewer, private Page $page) {}
+
     public function index()
     {
 
-        $model = new Page;
-        $pages = $model->getData();
+        $pages = $this->page->getData();
 
-        echo '<pre>';
-        var_dump($pages);
-        echo '</pre>';
 
-        require "views/page_index.php";
+        $title = 'index page';
+        echo $this->viewer->render('includes/header', ['title' => $title]);
+        echo $this->viewer->render('page/index', ['pages' => $pages]);
     }
 
     public function show(string $id) {
         $view = new Viewer();
-        echo $view->render('includes/header', ['title' => 'show pages']);
-        echo $view->render('page/show', ['id' => $id]);
+        echo $this->viewer->render('includes/header', ['title' => 'show pages']);
+        echo $this->viewer->render('page/show', ['id' => $id]);
     }
 
 }
