@@ -1,7 +1,11 @@
 <?php
+declare(strict_types=1);
+
 require_once 'autoload.php';
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+use App\Database;
+use Framework\Container;
 use Framework\Dispatcher;
 use Framework\Router;
 
@@ -13,7 +17,12 @@ $router->add('/pages', ['controller' => 'PageController', 'action' => 'index']);
 $router->add('/{controller}/{action}');
 
 
+$container = new Container();
+$container->set(Database::class, function () {
+    return new Database('localhost', 'cms', 'root', '');
 
-$dispatcher = new Dispatcher($router);
+});
+
+$dispatcher = new Dispatcher($router, $container);
 $dispatcher->handle($path);
 
